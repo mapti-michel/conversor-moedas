@@ -9,17 +9,13 @@ import java.util.Map;
 
 public class GeradorArquivo {
 
-    public void salvaJson(String moeda, double valorConvertido) throws IOException {
-
+    public static void salvarResultado(CurrentData currentData, String nomeArquivo) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-
-        String json = gson.toJson(Map.of("moeda", moeda, "valorConvertido", valorConvertido));
-
-        try(FileWriter escrita = new FileWriter("resultado.json")){
-            escrita.write(json);
-            System.out.println("Resultado salvo com sucesso como resultado.json");
-
+        try (FileWriter writer = new FileWriter(nomeArquivo, true)) { // 'true' para adicionar novos resultados
+            writer.write(gson.toJson(currentData) + System.lineSeparator());
+            System.out.println("Resultado salvo no arquivo JSON: " + nomeArquivo);
+        } catch (IOException e) {
+            System.err.println("Erro ao salvar o arquivo JSON: " + e.getMessage());
         }
     }
-
 }

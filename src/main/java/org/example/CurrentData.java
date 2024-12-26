@@ -4,25 +4,22 @@ import java.util.Map;
 
 public class CurrentData {
 
-    private String base;
-    private Map<String, Double> rates;
+    private String moedaOrigem;
+    private String moedaDestino;
+    private double valorOriginal;
+    private double valorConvertido;
+    private double taxaConversao;
 
-    public String getBase() {
-        return base;
+    public CurrentData(String moedaOrigem,
+                       String moedaDestino,
+                       double valorOriginal,
+                       double valorConvertido,
+                       double taxaConversao) {
+        this.moedaOrigem = moedaOrigem;
+        this.moedaDestino = moedaDestino;
+        this.valorOriginal = valorOriginal;
+        this.valorConvertido = valorConvertido;
+        this.taxaConversao = taxaConversao;
     }
-
-    public void setBase(String base) {
-        this.base = base;
-    }
-
-    public Map<String, Double> getRates() {
-        return rates;
-    }
-
-    public void setRates(Map<String, Double> rates) {
-        this.rates = rates;
-    }
-
-
 
 }
